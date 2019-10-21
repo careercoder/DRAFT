@@ -10,6 +10,8 @@ This is the content application that allows you to write blog post - it is used 
 - content
 ```
 
+- This is the apps.py file that your django project creates.
+- Maybe it should be in a swish.py file so the system can load it? 
 
 ```python
 class AppConfig():
