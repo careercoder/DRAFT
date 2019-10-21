@@ -21,6 +21,15 @@ class SwishComponent:
         return response
 
     def process_view(self, request, view_func, view_args, view_kwargs):
-        # Code to be executed before the call
-        pass
+        """
 
+        :param request:
+        :param view_func:
+        :param view_args:
+        :param view_kwargs:
+        :return: the goal is to return various data for the application
+        we need to look at getting all the blocks for the position being requested
+        as well as the primary component being requested.
+        """
+
+        return True
