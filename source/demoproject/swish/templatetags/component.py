@@ -7,7 +7,7 @@ register = template.Library()
 that have been assigned to that position. 
 """
 @register.inclusion_tag('swish/menu/main.tmpl.html', takes_context=True)
-def block_position(context, position):
+def block(context, position):
 
     request = context['request']
     elements = "this is a story of a girl"
