@@ -2,4 +2,4 @@ from django.db import models
 
 
 # Import Models
-from draft.models.menu import *
+from swish.models.menu import *

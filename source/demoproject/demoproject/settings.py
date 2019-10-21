@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'swish',  # Django Rapid Admin Framework Technology
+    'swish',  # SWISH - Django CMS - See What I See Hopefully.
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
