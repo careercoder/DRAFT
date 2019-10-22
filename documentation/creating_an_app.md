@@ -16,6 +16,16 @@ You will create two new python directories in this application
 - Components are the primary content to be rendered. 
 
 ```python
+# A component VIEW will have this following structure
+"""
+If the App is called content the app would be Content 
+the view would be Single or the name of the file that is being requested.
+The Type is equal to component
+
+eg.) ContentSingleCompoent
+
+if this was a block section it would be Content{What}Block:
+"""
 
 class AppViewType:
     def __init__(self):
