@@ -1,0 +1,12 @@
+{% comment %}
+    <!--
+        DOCUMENTATION:
+
+        WE NEED TO BE ABLE TO INCLUDE A MAIN CONTENT CLASS, AS WELL AS ID - IF THE USER
+        WANTS TO EMBED IT.
+     -->
+{% endcomment %}
+<!-- // MAIN CONTENT WRAPPER // -->
+<div class="content" {% if request.swish.content.id %}id="{{request.swish.content.id}}"{% endif %}>
+    {#% component %#}
+</div>

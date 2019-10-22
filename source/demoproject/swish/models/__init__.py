@@ -1,5 +1,5 @@
 from django.db import models
 
-
-# Import Models
 from swish.models.menu import *
+from swish.models.component import *
+from swish.models.block import *
