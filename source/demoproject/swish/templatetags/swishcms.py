@@ -1,14 +1,12 @@
 from django import template
-from pydoc import locate
-import collections
-
-# Import Core Things Needed... eg.) menu
 from swish.models.menu import MenuItem
+
+import collections
+from pydoc import locate
+from importlib import import_module
 
 register = template.Library()
 
-""":returns the primary component of the page to be rendered. 
-"""
 @register.inclusion_tag('swish/component/display.html', takes_context=True)
 def component(context):
 
@@ -20,8 +18,16 @@ def component(context):
         # Try to get by path break down /component/action/
         Component = collections.namedtuple('Component', 'app action id')
         app = Component(app="content", action="single", id=False)
+        pass
 
     app_class = str(app.app).capitalize() + str(app.action).capitalize() + 'Component'
+
+    """ This should follow the guidelines but will eventually be moved to a dynamic way to change this... """
+    app_module_path = app.app.lower() + '.components.' + str(app.action.lower())
+    im = import_module(app_module_path)
+
+    app_class = getattr(im, app_class)
+    app_class = app_class.render(self=app_class, request=request)
 
     return {'content': app_class}
 

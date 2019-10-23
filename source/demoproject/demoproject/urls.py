@@ -20,6 +20,7 @@ from swish.views import test_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path('test/', test_view)
+    re_path('test/', test_view),
+    re_path('', test_view)
 
 ]
