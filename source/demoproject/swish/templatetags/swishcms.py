@@ -11,25 +11,33 @@ register = template.Library()
 def component(context):
 
     request = context['request']
+    uri_path = request.META['PATH_INFO']
 
     try:
-        app = MenuItem.objects.get(link=request.META['PATH_INFO'])
+        app = MenuItem.objects.get(link=uri_path)
     except MenuItem.DoesNotExist:
         # Try to get by path break down /component/action/
         Component = collections.namedtuple('Component', 'app action id')
-        app = Component(app="content", action="single", id=False)
-        pass
+        app = Component(app=uri_path.split('/')[0], action=uri_path.split('/')[1], id=False)
 
     app_class = str(app.app).capitalize() + str(app.action).capitalize() + 'Component'
-
-    """ This should follow the guidelines but will eventually be moved to a dynamic way to change this... """
     app_module_path = app.app.lower() + '.components.' + str(app.action.lower())
-    im = import_module(app_module_path)
 
-    app_class = getattr(im, app_class)
-    app_class = app_class.render(self=app_class, request=request)
+    try:
+        im = import_module(app_module_path)
+    except TypeError as e:
+        app_module_path = 'swish.components.error'
+        im = import_module(app_module_path)
+        request.error = e
+        app_class = 'SwishErrorComponent'
+    finally:
+        # Do some logging?
+        pass
 
-    return {'content': app_class}
+    app = getattr(im, app_class)
+    app_response = app.render(self=app, request=request)
+
+    return {'content': app_response}
 
 
 """:returns a block position with generated block components
