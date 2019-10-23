@@ -36,6 +36,7 @@ class Command(BaseCommand):
                     print(swish_app_action_im_class.__description__)
 
 
+
             except TypeError as e:
                 print("Not a Swish App!")
 
