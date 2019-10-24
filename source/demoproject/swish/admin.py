@@ -12,10 +12,26 @@ class ListAdminMixin(object):
         component_model = apps.get_model('swish', 'Component')
         model_meta = str(model._meta)
         try:
-
+            print(model_meta)
             component = component_model.objects.get(linked_model=model_meta)
             params = json.loads(component.params)
-            self.list_display = params['list_display']
+
+            # List Display
+            if params['admin']['list_display']:
+                print("list_display")
+                self.list_display = params['admin']['list_display']
+
+            try:
+                self.list_filter = params['admin']['list_filter']
+            except Exception as e:
+                pass
+
+            try:
+                if params['admin']['search_fields']:
+                    print("Search Fields")
+                    self.search_fields = params['admin']['search_fields']
+            except Exception as e:
+                pass
 
         # In case it fails for some reason, show default....
         except Exception as e:
@@ -23,7 +39,8 @@ class ListAdminMixin(object):
             self.list_display = [field.name for field in model._meta.fields if field.name != "id"]
 
         super(ListAdminMixin, self).__init__(model, admin_site)
-            # just add it manually
+
+
 
 
 
