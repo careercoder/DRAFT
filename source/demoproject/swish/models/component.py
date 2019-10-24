@@ -7,6 +7,8 @@ class Component(models.Model):
     slug = models.SlugField(max_length=150)
     path = models.CharField(max_length=1064)  # Path Identifier
     description = models.TextField(blank=True, null=True)
+    params = models.TextField(blank=True)
+    linked_model = models.CharField(max_length=150, blank=True)  # We are going to have to discuss this...
 
     def __str__(self):
         return self.name
@@ -19,6 +21,7 @@ class ComponentAction(models.Model):
     slug = models.SlugField(max_length=150)
     path = models.CharField(max_length=1064)
     description = models.TextField(blank=True, null=True)
+
 
     def __str__(self):
         return self.name

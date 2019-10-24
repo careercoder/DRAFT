@@ -31,13 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'swish',  # SWISH - Django CMS - See What I See Hopefully.
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'swish',  # SWISH - Django CMS - See What I See Hopefully.
     'content',
     'account',
 ]
