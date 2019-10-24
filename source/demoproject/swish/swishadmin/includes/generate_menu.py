@@ -2,6 +2,7 @@
 # Swish Admin Menu Generation
 from django.apps import apps
 
+
 class SwishAdminMenu:
 
     def generate(self):

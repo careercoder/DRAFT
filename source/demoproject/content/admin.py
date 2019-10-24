@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from content.models import *
+
+
+@admin.register(Article)
+class ContentAdmin(admin.ModelAdmin):
+    pass

@@ -1,5 +1,5 @@
 # DRAFT
- Django Rapid Admin Framework Technology
+ Django's Rapid Application Framework Technology
 
  The Goal Behind Rapid Admin is more than just creating a better admin interface, it's to create an amazing cms system for Django.
  
