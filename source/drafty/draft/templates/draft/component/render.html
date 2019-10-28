@@ -1,0 +1,7 @@
+<!-- // --- // -->
+
+<!-- // MAIN CONTENT WRAPPER // -->
+<div class="content" {% if request.swish.content.id %}id="{{request.swish.content.id}}"{% endif %}>
+    {#% component %#}
+    {{ content }}
+</div>
